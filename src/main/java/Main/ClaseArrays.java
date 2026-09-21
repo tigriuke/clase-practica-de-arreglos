@@ -3,7 +3,8 @@
  */
 
 package Main;
-
+import Vista.VistaArray;
+import Controlador.ControladorArray;
 /**
  *
  * @author coffe
@@ -11,7 +12,10 @@ package Main;
 public class ClaseArrays {
 
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        
+        VistaArray vista = new VistaArray();
+        ControladorArray controlador = new ControladorArray(vista);
+        controlador.iniciar();
     }
     
     

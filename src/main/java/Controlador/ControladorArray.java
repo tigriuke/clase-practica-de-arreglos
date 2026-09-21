@@ -15,5 +15,10 @@ public class ControladorArray {
         this.vista = vista;
     }
     
-    public iniciar()
+    public void iniciar(){
+    
+    
+    
+    
+    }
 }
