@@ -3,17 +3,99 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package Controlador;
+import Modelo.Estudiante;
 import Vista.VistaArray;
+import javax.swing.JOptionPane;
 /**
  *
- * @author coffe
+ * @author Samuel Lopez
  */
 public class ControladorArray {
     private VistaArray vista;
+    private Estudiante[] estudiantes;
     
     public ControladorArray(VistaArray vista){
         this.vista = vista;
     }
     
-    public iniciar()
+    public void iniciar(){
+        int n = vista.pedirNumeroEstudiantes();
+        estudiantes = new Estudiante[n];
+        
+        for(int i = 0; i < estudiantes.length; i++) {
+            estudiantes[i] = registrarEstudiante();
+        }
+        
+        vista.listarEstudiantes(estudiantes);
+        
+        double filtro = vista.pedirLimite();
+        listarEstudiantesConNotaDefinitivaMayorA(filtro);
+        
+        double adicion = vista.pedirAdicion();
+        sumarADesarrollo(adicion);
+        vista.listarEstudiantes(estudiantes);
+    
+    
+    }
+    
+    public Estudiante registrarEstudiante(){
+        String nombre = vista.pedirNombre();
+        int edad = vista.pedirEdad();
+        int codigo = vista.pedirId();
+        double notaDesarrollo = vista.pedirNotaDesarrollo();
+        double notaTecnologia = vista.pedirNotaTecnologia();
+        
+        Estudiante nuevoEstudiante = new Estudiante(nombre, edad, codigo, notaDesarrollo, notaTecnologia);
+        return nuevoEstudiante;
+    }
+    
+    public void modificarEstudiante(String nombreBuscado) {
+        for (int i = 0; i < estudiantes.length; i++) {
+            if (estudiantes[i] != null && estudiantes[i].getNombre().equalsIgnoreCase(nombreBuscado)) {
+                String nuevoNombre = JOptionPane.showInputDialog("Ingrese el nuevo nombre:");
+                int nuevaEdad = Integer.parseInt(JOptionPane.showInputDialog("Ingrese la nueva edad:"));
+
+                estudiantes[i].setNombre(nuevoNombre);
+                estudiantes[i].setEdad(nuevaEdad); 
+
+                JOptionPane.showMessageDialog(null, "Estudiante modificado exitosamente.");
+                return;
+            }
+        }
+        JOptionPane.showMessageDialog(null, "Estudiante no encontrado.");
+    }
+    
+    public void listarEstudiantesConNotaDefinitivaMayorA(double filtro){
+        
+        String mensaje = "";
+        
+        for(int i = 0; i < estudiantes.length; i++){
+            if(estudiantes[i].getNotaDefinitiva() > filtro){
+                mensaje += "\n[" + i + "] " + estudiantes[i].getNombre() + " - " + estudiantes[i].getEdad() + " años" + "\nCódigo de estudiante: " + estudiantes[i].getId() + "\nNota de desarrollo: " + estudiantes[i].getNotaDesarrollo() + "\nNota de Tecnologia: " + estudiantes[i].getNotaTecnologia() + "\nNota definitiva: " + estudiantes[i].getNotaDefinitiva();
+            }
+        }
+        
+        if (!mensaje.isEmpty()){
+            JOptionPane.showMessageDialog(null, mensaje,"Lista de estudiantes", JOptionPane.INFORMATION_MESSAGE );
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "No hay ningun estudiante con una nota mayor a " + filtro,"Lista de estudiantes", JOptionPane.INFORMATION_MESSAGE );
+        }
+        
+        
+    }
+    
+    public void sumarADesarrollo(double adicion){
+    
+    for(int i = 0; i < estudiantes.length; i++) {
+        
+        if(estudiantes[i].getNotaDesarrollo() + adicion > 5.0){
+           double faltante = 5 - estudiantes[i].getNotaDesarrollo();
+           estudiantes[i].setNotaDesarrollo(estudiantes[i].getNotaDesarrollo() + faltante);
+        }
+        else {
+            estudiantes[i].setNotaDesarrollo(estudiantes[i].getNotaDesarrollo() + adicion);
+        }
+    }
+    }
 }
