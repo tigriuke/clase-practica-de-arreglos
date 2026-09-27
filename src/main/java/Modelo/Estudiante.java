@@ -63,6 +63,10 @@ public class Estudiante {
     public void setNotaTecnologia(double notaTecnologia) {
         this.notaTecnologia = notaTecnologia;
     }
+
+    public double getNotaDefinitiva() {
+        return notaTecnologia * 0.4 + notaDesarrollo * 0.6;
+    }
     
     
 }

@@ -88,29 +88,11 @@ public class VistaArray {
         for (int i = 0; i < estudiantes.length; i++) {
             if (estudiantes[i] != null) {
                 
-                message += "\n[" + i + "] " + estudiantes[i].getNombre() + " - " + estudiantes[i].getEdad() + " años" + "\nCódigo de estudiante: " + estudiantes[i].getId() + "\nNota de desarrollo: " + estudiantes[i].getNotaDesarrollo() + "\nNota de Tecnologia: " + estudiantes[i].getNotaTecnologia();
+                message += "\n[" + i + "] " + estudiantes[i].getNombre() + " - " + estudiantes[i].getEdad() + " años" + "\nCódigo de estudiante: " + estudiantes[i].getId() + "\nNota de desarrollo: " + estudiantes[i].getNotaDesarrollo() + "\nNota de Tecnologia: " + estudiantes[i].getNotaTecnologia() + "\nNota definitiva: " + estudiantes[i].getNotaDefinitiva();
             }
         }
         
         JOptionPane.showMessageDialog(null, message,"Lista de estudiantes", JOptionPane.INFORMATION_MESSAGE );
-    }
-    
-    
-
-    public static void modificarEstudiante(Estudiante[] estudiantes, String nombreBuscado) {
-        for (int i = 0; i < estudiantes.length; i++) {
-            if (estudiantes[i] != null && estudiantes[i].getNombre().equalsIgnoreCase(nombreBuscado)) {
-                String nuevoNombre = JOptionPane.showInputDialog("Ingrese el nuevo nombre:");
-                int nuevaEdad = Integer.parseInt(JOptionPane.showInputDialog("Ingrese la nueva edad:"));
-
-                estudiantes[i].setNombre(nuevoNombre);
-                estudiantes[i].setEdad(nuevaEdad); 
-
-                JOptionPane.showMessageDialog(null, "Estudiante modificado exitosamente.");
-                return;
-            }
-        }
-        JOptionPane.showMessageDialog(null, "Estudiante no encontrado.");
     }
 
 }

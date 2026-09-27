@@ -29,7 +29,7 @@ public class ControladorArray {
         vista.listarEstudiantes(estudiantes);
         
         double filtro = vista.pedirLimite();
-        listarEstudiantesConNotaDeTecnologiaMayorA(filtro);
+        listarEstudiantesConNotaDefinitivaMayorA(filtro);
         
         double adicion = vista.pedirAdicion();
         sumarADesarrollo(adicion);
@@ -65,17 +65,17 @@ public class ControladorArray {
         JOptionPane.showMessageDialog(null, "Estudiante no encontrado.");
     }
     
-    public void listarEstudiantesConNotaDeTecnologiaMayorA(double filtro){
+    public void listarEstudiantesConNotaDefinitivaMayorA(double filtro){
         
         String mensaje = "";
         
         for(int i = 0; i < estudiantes.length; i++){
-            if(estudiantes[i].getNotaTecnologia() > filtro){
-                mensaje += "\n[" + i + "] " + estudiantes[i].getNombre() + " - " + estudiantes[i].getEdad() + " años" + "\nCódigo de estudiante: " + estudiantes[i].getId() + "\nNota de desarrollo: " + estudiantes[i].getNotaDesarrollo() + " Nota de Tecnologia: " + estudiantes[i].getNotaTecnologia();
+            if(estudiantes[i].getNotaDefinitiva() > filtro){
+                mensaje += "\n[" + i + "] " + estudiantes[i].getNombre() + " - " + estudiantes[i].getEdad() + " años" + "\nCódigo de estudiante: " + estudiantes[i].getId() + "\nNota de desarrollo: " + estudiantes[i].getNotaDesarrollo() + "\nNota de Tecnologia: " + estudiantes[i].getNotaTecnologia() + "\nNota definitiva: " + estudiantes[i].getNotaDefinitiva();
             }
         }
         
-        if (mensaje != ""){
+        if (!mensaje.isEmpty()){
             JOptionPane.showMessageDialog(null, mensaje,"Lista de estudiantes", JOptionPane.INFORMATION_MESSAGE );
         }
         else{
