@@ -12,10 +12,16 @@ public class Estudiante {
     
     private String nombre;
     private int edad;
+    private int id;
+    private double notaDesarrollo;
+    private double notaTecnologia;
     
-    public Estudiante(String nombre, int edad){
+    public Estudiante(String nombre, int edad, int id, double notaDesarrollo, double notaTecnologia){
         this.nombre = nombre;
         this.edad = edad;
+        this.id = id;
+        this.notaDesarrollo = notaDesarrollo;
+        this.notaTecnologia = notaTecnologia;
     }
 
     public String getNombre() {
@@ -32,6 +38,30 @@ public class Estudiante {
 
     public void setEdad(int edad) {
         this.edad = edad;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public double getNotaDesarrollo() {
+        return notaDesarrollo;
+    }
+
+    public void setNotaDesarrollo(double notaDesarrollo) {
+        this.notaDesarrollo = notaDesarrollo;
+    }
+
+    public double getNotaTecnologia() {
+        return notaTecnologia;
+    }
+
+    public void setNotaTecnologia(double notaTecnologia) {
+        this.notaTecnologia = notaTecnologia;
     }
     
     
