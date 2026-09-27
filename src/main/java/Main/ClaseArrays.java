@@ -7,7 +7,7 @@ import Vista.VistaArray;
 import Controlador.ControladorArray;
 /**
  *
- * @author coffe
+ * @author Samuel Lopez
  */
 public class ClaseArrays {
 

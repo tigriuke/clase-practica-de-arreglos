@@ -8,7 +8,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author coffe
+ * @author Samuel Lopez
  */
 public class VistaArray {
     
@@ -17,14 +17,14 @@ public class VistaArray {
             try{
                 int numero = Integer.parseInt(JOptionPane.showInputDialog(null, mensaje, "Ingrese un número", JOptionPane.QUESTION_MESSAGE));
                 if(numero < limiteInferior || numero > limiteSuperior){
-                    JOptionPane.showMessageDialog(null, "Error, número debe ser mayor a 0.", "Mensaje de error", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Error, número debe estar entre " + limiteInferior + " y " + limiteSuperior, "Mensaje de error", JOptionPane.WARNING_MESSAGE);
                 }
                 else{
                     return numero;
                 }
             }
             catch(NumberFormatException e){
-                JOptionPane.showMessageDialog(null, "Error, número inválido.", "Mensaje de error", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Error, número inválido." + "\nPrueba a escribirlos con coma ',' ", "Mensaje de error", JOptionPane.WARNING_MESSAGE);
             }
         }
         
@@ -36,14 +36,14 @@ public class VistaArray {
             try{
                 double numero = Double.parseDouble(JOptionPane.showInputDialog(null, mensaje, "Ingrese un número", JOptionPane.QUESTION_MESSAGE));
                 if(numero < limiteInferior || numero > limiteSuperior){
-                    JOptionPane.showMessageDialog(null, "Error, número debe ser mayor a 0.", "Mensaje de error", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Error, número debe estar entre " + limiteInferior + " y " + limiteSuperior, "Mensaje de error", JOptionPane.WARNING_MESSAGE);
                 }
                 else{
                     return numero;
                 }
             }
             catch(NumberFormatException e){
-                JOptionPane.showMessageDialog(null, "Error, número inválido.", "Mensaje de error", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Error, número inválido." + "\nPrueba a escribirlos con coma ',' ", "Mensaje de error", JOptionPane.WARNING_MESSAGE);
             }
         }
     }
@@ -70,11 +70,15 @@ public class VistaArray {
     
     
     public double pedirLimite(){
-        return validarDouble("Ingrese un número decimal entre 0 y 4,9; \nSe mostraran todos los estudiatntes con una nota definitiva superior a ese número", 0, 4.9);
+        return validarDouble("Ingrese un número decimal entre 0 y 4,9; \nSe mostraran todos los estudiatntes con una nota definitiva superior a ese número.", 0, 4.9);
     }
     
     public String pedirNombre(){
         return JOptionPane.showInputDialog("Ingrese el nombre del estudiante:");
+    }
+    
+    public double pedirAdicion(){
+        return validarDouble("Ingrese un número decimal entre 0 y 0.5; \nSe sumara este numero a todas las notas de desarrollo de los estudiantes almacenados.", 0, 0.5);
     }
     
     
@@ -84,7 +88,7 @@ public class VistaArray {
         for (int i = 0; i < estudiantes.length; i++) {
             if (estudiantes[i] != null) {
                 
-                message += "\n[" + i + "] " + estudiantes[i].getNombre() + " - " + estudiantes[i].getEdad() + " años" + "\nCódigo de estudiante: " + estudiantes[i].getId() + "\nNota de desarrollo: " + estudiantes[i].getNotaDesarrollo() + " Nota de Tecnologia: " + estudiantes[i].getNotaTecnologia();
+                message += "\n[" + i + "] " + estudiantes[i].getNombre() + " - " + estudiantes[i].getEdad() + " años" + "\nCódigo de estudiante: " + estudiantes[i].getId() + "\nNota de desarrollo: " + estudiantes[i].getNotaDesarrollo() + "\nNota de Tecnologia: " + estudiantes[i].getNotaTecnologia();
             }
         }
         

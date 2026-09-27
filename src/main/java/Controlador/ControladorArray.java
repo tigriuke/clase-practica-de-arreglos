@@ -8,7 +8,7 @@ import Vista.VistaArray;
 import javax.swing.JOptionPane;
 /**
  *
- * @author coffe
+ * @author Samuel Lopez
  */
 public class ControladorArray {
     private VistaArray vista;
@@ -30,6 +30,10 @@ public class ControladorArray {
         
         double filtro = vista.pedirLimite();
         listarEstudiantesConNotaDeTecnologiaMayorA(filtro);
+        
+        double adicion = vista.pedirAdicion();
+        sumarADesarrollo(adicion);
+        vista.listarEstudiantes(estudiantes);
     
     
     }
@@ -70,7 +74,28 @@ public class ControladorArray {
                 mensaje += "\n[" + i + "] " + estudiantes[i].getNombre() + " - " + estudiantes[i].getEdad() + " años" + "\nCódigo de estudiante: " + estudiantes[i].getId() + "\nNota de desarrollo: " + estudiantes[i].getNotaDesarrollo() + " Nota de Tecnologia: " + estudiantes[i].getNotaTecnologia();
             }
         }
-        JOptionPane.showMessageDialog(null, mensaje,"Lista de estudiantes", JOptionPane.INFORMATION_MESSAGE );
+        
+        if (mensaje != ""){
+            JOptionPane.showMessageDialog(null, mensaje,"Lista de estudiantes", JOptionPane.INFORMATION_MESSAGE );
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "No hay ningun estudiante con una nota mayor a " + filtro,"Lista de estudiantes", JOptionPane.INFORMATION_MESSAGE );
+        }
+        
+        
+    }
     
+    public void sumarADesarrollo(double adicion){
+    
+    for(int i = 0; i < estudiantes.length; i++) {
+        
+        if(estudiantes[i].getNotaDesarrollo() + adicion > 5.0){
+           double faltante = 5 - estudiantes[i].getNotaDesarrollo();
+           estudiantes[i].setNotaDesarrollo(estudiantes[i].getNotaDesarrollo() + faltante);
+        }
+        else {
+            estudiantes[i].setNotaDesarrollo(estudiantes[i].getNotaDesarrollo() + adicion);
+        }
+    }
     }
 }

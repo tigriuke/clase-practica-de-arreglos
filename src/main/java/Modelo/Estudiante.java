@@ -6,7 +6,7 @@ package Modelo;
 
 /**
  *
- * @author coffe
+ * @author Samuel Lopez
  */
 public class Estudiante {
     
